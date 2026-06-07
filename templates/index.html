@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram Unfollowers Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <h1>Instagram Unfollowers Checker</h1>
+<div class="container">
 
-    <p>Upload your Instagram exported HTML files.</p>
+    <div class="card">
 
-    <form action="/compare" method="POST" enctype="multipart/form-data">
+        <h1>Instagram Unfollowers Checker</h1>
 
-        <div>
-            <label>Followers File</label>
-            <br><br>
-            <input type="file" name="followers" required>
-        </div>
+        <p class="subtitle">
+            Upload your Instagram exported HTML files
+        </p>
 
-        <br>
+        <form action="/compare" method="POST" enctype="multipart/form-data">
 
-        <div>
-            <label>Following File</label>
-            <br><br>
-            <input type="file" name="following" required>
-        </div>
+            <div class="file-group">
+                <label>Followers File</label>
+                <input type="file" name="followers" required>
+            </div>
 
-        <br><br>
+            <div class="file-group">
+                <label>Following File</label>
+                <input type="file" name="following" required>
+            </div>
 
-        <button type="submit">
-            Compare Lists
-        </button>
+            <button class="btn" type="submit">
+                Compare Lists
+            </button>
 
-    </form>
+        </form>
+
+    </div>
+
+</div>
 
 </body>
 </html>
