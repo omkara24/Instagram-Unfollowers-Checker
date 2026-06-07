@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Results</title>
+    <title>Instagram Analysis</title>
 </head>
 <body>
 
-    <h1>People Who Don't Follow You Back</h1>
+    <h1>Instagram Analysis</h1>
 
-    <h2>Total: {{ total }}</h2>
+    <hr>
+
+    <h2>Statistics</h2>
+
+    <p><strong>Total Followers:</strong> {{ followers_count }}</p>
+
+    <p><strong>Total Following:</strong> {{ following_count }}</p>
+
+    <p><strong>Not Following Back:</strong> {{ non_followers_count }}</p>
+
+    <hr>
+
+    <h2>People Who Don't Follow You Back</h2>
 
     <ul>
         {% for user in non_followers %}
@@ -17,9 +29,7 @@
 
     <br>
 
-    <a href="/">
-        Check Another Account
-    </a>
+    <a href="/">Check Again</a>
 
 </body>
 </html>

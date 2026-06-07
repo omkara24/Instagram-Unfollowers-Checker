@@ -15,6 +15,7 @@ def home():
 
 @app.route("/compare", methods=["POST"])
 def compare():
+
     followers_file = request.files["followers"]
     following_file = request.files["following"]
 
@@ -31,15 +32,17 @@ def compare():
     followers_file.save(followers_path)
     following_file.save(following_path)
 
-    non_followers = get_non_followers(
+    result = get_non_followers(
         followers_path,
         following_path
     )
 
     return render_template(
         "results.html",
-        non_followers=non_followers,
-        total=len(non_followers)
+        followers_count=result["followers_count"],
+        following_count=result["following_count"],
+        non_followers_count=result["non_followers_count"],
+        non_followers=result["non_followers"]
     )
 
 
