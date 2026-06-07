@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>Instagram Unfollowers Checker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -16,20 +18,36 @@
             Upload your Instagram exported HTML files
         </p>
 
-        <form action="/compare" method="POST" enctype="multipart/form-data">
+        <form action="/compare"
+              method="POST"
+              enctype="multipart/form-data">
 
-            <div class="file-group">
-                <label>Followers File</label>
-                <input type="file" name="followers" required>
+            <div class="upload-card">
+
+                <h3>📄 Followers File</h3>
+
+                <input
+                    type="file"
+                    name="followers"
+                    required
+                >
+
             </div>
 
-            <div class="file-group">
-                <label>Following File</label>
-                <input type="file" name="following" required>
+            <div class="upload-card">
+
+                <h3>👥 Following File</h3>
+
+                <input
+                    type="file"
+                    name="following"
+                    required
+                >
+
             </div>
 
             <button class="btn" type="submit">
-                Compare Lists
+                Analyze Account
             </button>
 
         </form>
