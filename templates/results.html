@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+
+    <h1>People Who Don't Follow You Back</h1>
+
+    <h2>Total: {{ total }}</h2>
+
+    <ul>
+        {% for user in non_followers %}
+            <li>{{ user }}</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+
+    <a href="/">
+        Check Another Account
+    </a>
+
+</body>
+</html>
