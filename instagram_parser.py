@@ -43,6 +43,3 @@ def get_non_followers(followers_file, following_file):
         "non_followers_count": len(non_followers),
         "non_followers": non_followers
     }
-
-
-print("NEW PARSER LOADED")
