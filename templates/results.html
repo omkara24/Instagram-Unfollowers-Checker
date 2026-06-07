@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <title>Instagram Analysis</title>
+    <title>Instagram Analytics Dashboard</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 <body>
 
 <div class="container">
 
-    <h1>Instagram Analyzer</h1>
+    <div class="hero">
+
+        <h1>📊 Analytics Dashboard</h1>
+
+        <p>
+            Detailed analysis of your Instagram connections
+        </p>
+
+    </div>
 
     <div class="stats">
 
@@ -35,27 +41,46 @@
 
     <div class="results">
 
-        <h2>People Who Don't Follow You Back</h2>
+        <div class="results-header">
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔍 Search username..."
-            class="search-box"
-        >
+            <h2>People Who Don't Follow You Back</h2>
 
-        <ul>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search username..."
+                class="search-box"
+            >
+
+        </div>
+
+        <div class="user-grid">
 
             {% for user in non_followers %}
-                <li class="user-item">
+
+            <div class="user-card">
+
+                <div class="username">
                     {{ user }}
-                </li>
+                </div>
+
+                <a
+                   target="_blank"
+                   href="https://instagram.com/{{ user }}"
+                   class="profile-btn">
+
+                    Open Profile
+
+                </a>
+
+            </div>
+
             {% endfor %}
 
-        </ul>
+        </div>
 
         <a href="/" class="back-btn">
-            Analyze Again
+            Analyze Another Account
         </a>
 
     </div>
