@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Unfollowers Checker</title>
+</head>
+<body>
+
+    <h1>Instagram Unfollowers Checker</h1>
+
+    <p>Upload your Instagram exported HTML files.</p>
+
+    <form action="/compare" method="POST" enctype="multipart/form-data">
+
+        <div>
+            <label>Followers File</label>
+            <br><br>
+            <input type="file" name="followers" required>
+        </div>
+
+        <br>
+
+        <div>
+            <label>Following File</label>
+            <br><br>
+            <input type="file" name="following" required>
+        </div>
+
+        <br><br>
+
+        <button type="submit">
+            Compare Lists
+        </button>
+
+    </form>
+
+</body>
+</html>
