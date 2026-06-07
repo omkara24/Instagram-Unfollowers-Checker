@@ -2,34 +2,52 @@
 <html>
 <head>
     <title>Instagram Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
+<div class="container">
+
     <h1>Instagram Analysis</h1>
 
-    <hr>
+    <div class="stats">
 
-    <h2>Statistics</h2>
+        <div class="stat-card">
+            <h2>Followers</h2>
+            <p>{{ followers_count }}</p>
+        </div>
 
-    <p><strong>Total Followers:</strong> {{ followers_count }}</p>
+        <div class="stat-card">
+            <h2>Following</h2>
+            <p>{{ following_count }}</p>
+        </div>
 
-    <p><strong>Total Following:</strong> {{ following_count }}</p>
+        <div class="stat-card">
+            <h2>Unfollowers</h2>
+            <p>{{ non_followers_count }}</p>
+        </div>
 
-    <p><strong>Not Following Back:</strong> {{ non_followers_count }}</p>
+    </div>
 
-    <hr>
+    <div class="results">
 
-    <h2>People Who Don't Follow You Back</h2>
+        <h2>People Who Don't Follow You Back</h2>
 
-    <ul>
-        {% for user in non_followers %}
-            <li>{{ user }}</li>
-        {% endfor %}
-    </ul>
+        <br>
 
-    <br>
+        <ul>
+            {% for user in non_followers %}
+                <li>{{ user }}</li>
+            {% endfor %}
+        </ul>
 
-    <a href="/">Check Again</a>
+        <a class="back-btn" href="/">
+            Check Again
+        </a>
+
+    </div>
+
+</div>
 
 </body>
 </html>
