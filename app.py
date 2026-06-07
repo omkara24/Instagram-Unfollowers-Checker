@@ -1,4 +1,3 @@
-from flask import after_this_request
 from flask import (
     Flask,
     render_template,
@@ -8,8 +7,8 @@ from flask import (
 
 from instagram_parser import get_non_followers
 
+from io import BytesIO
 import os
-import csv
 
 app = Flask(__name__)
 
@@ -114,72 +113,55 @@ def compare():
 @app.route("/download-txt")
 def download_txt():
 
-    file_path = os.path.join(
-        UPLOAD_FOLDER,
-        "unfollowers.txt"
-    )
-
-    with open(
-        file_path,
-        "w",
-        encoding="utf-8"
-    ) as file:
-
-        for username in app.config.get(
+    content = "\n".join(
+        app.config.get(
             "LAST_RESULTS",
             []
-        ):
-            file.write(username + "\n")
+        )
+    )
 
-    @after_this_request
-    def remove_file(response):
-        try:
-            os.remove(file_path)
-        except:
-            pass
-        return response
+    buffer = BytesIO()
+
+    buffer.write(
+        content.encode("utf-8")
+    )
+
+    buffer.seek(0)
 
     return send_file(
-        file_path,
-        as_attachment=True
+        buffer,
+        as_attachment=True,
+        download_name="unfollowers.txt",
+        mimetype="text/plain"
     )
+
 
 @app.route("/download-csv")
 def download_csv():
 
-    file_path = os.path.join(
-        UPLOAD_FOLDER,
-        "unfollowers.csv"
+    csv_content = "Username\n"
+
+    for username in app.config.get(
+        "LAST_RESULTS",
+        []
+    ):
+        csv_content += (
+            username + "\n"
+        )
+
+    buffer = BytesIO()
+
+    buffer.write(
+        csv_content.encode("utf-8")
     )
 
-    with open(
-        file_path,
-        "w",
-        newline="",
-        encoding="utf-8"
-    ) as file:
-
-        writer = csv.writer(file)
-
-        writer.writerow(["Username"])
-
-        for username in app.config.get(
-            "LAST_RESULTS",
-            []
-        ):
-            writer.writerow([username])
-
-    @after_this_request
-    def remove_file(response):
-        try:
-            os.remove(file_path)
-        except:
-            pass
-        return response
+    buffer.seek(0)
 
     return send_file(
-        file_path,
-        as_attachment=True
+        buffer,
+        as_attachment=True,
+        download_name="unfollowers.csv",
+        mimetype="text/csv"
     )
 
 
