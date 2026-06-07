@@ -269,3 +269,12 @@ input[type="file"]{
     border-radius:10px;
     font-weight:600;
 }
+
+.error-box{
+    background:#dc2626;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+    text-align:center;
+}

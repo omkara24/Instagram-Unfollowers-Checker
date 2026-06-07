@@ -32,6 +32,12 @@
 
     <div class="card">
 
+        {% if error %}
+        <div class="error-box">
+            {{ error }}
+        </div>
+        {% endif %}
+
         <form action="/compare"
               method="POST"
               enctype="multipart/form-data">
@@ -43,6 +49,7 @@
                 <input
                     type="file"
                     name="followers"
+                    accept=".html"
                     required
                 >
 
@@ -55,6 +62,7 @@
                 <input
                     type="file"
                     name="following"
+                    accept=".html"
                     required
                 >
 
